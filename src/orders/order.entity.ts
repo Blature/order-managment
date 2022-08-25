@@ -3,7 +3,7 @@ import { OrderState } from './order-state.enum';
 
 @Entity()
 export class Order {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
