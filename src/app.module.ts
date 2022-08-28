@@ -5,8 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { configValidationSchema } from './config.schema';
 import { OrdersModule } from './orders/orders.module';
-import { AuthModule } from './auth/auth.module';
-import { PaymentsModule } from './payments/payments.module';
+import { BcGateway } from './bc.gateway';
 
 @Module({
   imports: [
@@ -29,11 +28,10 @@ import { PaymentsModule } from './payments/payments.module';
         database: configService.get('DB_DATABASE'),
       }),
     }),
-    AuthModule,
-    PaymentsModule,
   ],
 
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, BcGateway],
+  exports: [BcGateway],
 })
 export class AppModule {}
